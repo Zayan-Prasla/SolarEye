@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    tools:ignore="Overdraw"> <!-- Navy Blue Background -->
+
+    <!-- Sticky Header Section -->
+    <LinearLayout
+        android:id="@+id/stickyHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:background="#FFFFFF">
+
+        <!-- Title -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:fontFamily="serif-monospace"
+            android:text="@string/event__history"
+            android:textColor="@android:color/black"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <!-- Horizontal Divider -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="8dp"
+            android:background="#000000" />
+    </LinearLayout>
+
+    <!-- Event History List -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/eventHistoryRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/stickyHeader"
+        android:layout_marginTop="21dp"
+        android:clipToPadding="false"
+        android:paddingBottom="100dp" />
+
+    <!-- Enlarged Thumbnail View -->
+    <ImageView
+        android:id="@+id/enlargedThumbnail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="gone"
+        android:background="@android:color/black"
+        android:contentDescription="@string/enlarged_thumbnail_description" />
+</RelativeLayout>

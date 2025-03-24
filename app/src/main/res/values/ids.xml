@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="correctItem" type="color">@color/white</item> <!-- Reference to a resource -->
+</resources>

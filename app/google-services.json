@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "985862265129",
+    "project_id": "solareye-security-system",
+    "storage_bucket": "solareye-security-system.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:985862265129:android:e747842c1efd8bdc3a7f38",
+        "android_client_info": {
+          "package_name": "com.zayan.solareye"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyApdPKZizESib9-DxhlqVtvBDqzz_1RCiU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

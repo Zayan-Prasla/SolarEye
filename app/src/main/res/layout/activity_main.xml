@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient_bg">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="16dp">
+
+        <!-- Logo and App Title -->
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="16dp"
+            android:contentDescription="@string/logo_content_description"
+            android:src="@drawable/ic_logo" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="16dp"
+            android:fontFamily="serif-monospace"
+            android:text="@string/app_title"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <!-- Event History Section (Clickable) -->
+        <LinearLayout
+            android:id="@+id/eventHistorySection"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:clickable="true"
+            android:focusable="true"
+            android:layout_marginBottom="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:fontFamily="serif-monospace"
+                android:text="@string/event_history"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <!-- Event History Card with Rounded Edges -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="300dp"
+                android:layout_height="200dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="4dp">
+
+                <ImageView
+                    android:id="@+id/eventHistoryImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/sample_event_history"
+                    android:contentDescription="@string/event_history_image_description" />
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+
+        <!-- Charging Stats Section with BarChart -->
+        <LinearLayout
+            android:id="@+id/chargingStatsView"
+            android:layout_width="332dp"
+            android:layout_height="253dp"
+            android:layout_marginBottom="16dp"
+            android:background="#E0E0E0"
+            android:orientation="vertical"
+            android:padding="8dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:fontFamily="serif-monospace"
+                android:text="@string/charging_stats"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <!-- BarChart View -->
+            <com.github.mikephil.charting.charts.BarChart
+                android:id="@+id/batteryLevelChart"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="16dp" />
+        </LinearLayout>
+
+        <!-- System Controls Title -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:fontFamily="serif-monospace"
+            android:text="@string/system_controls"
+            android:textColor="#000000"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <!-- System Controls Section -->
+        <LinearLayout
+            android:id="@+id/controlsView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginBottom="16dp">
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp">
+
+                <ImageButton
+                    android:id="@+id/cameraControlButton"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:background="@drawable/rounded_button_green"
+                    android:padding="16dp"
+                    android:contentDescription="@string/camera_control"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/baseline_linked_camera_24"
+                    app:tint="@android:color/white"
+                    tools:ignore="ImageContrastCheck" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp">
+
+                <!-- Light Control Button -->
+                <ImageButton
+                    android:id="@+id/lightControlButton"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:background="@drawable/rounded_button_green"
+                    android:padding="16dp"
+                    android:contentDescription="@string/light_control"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/baseline_lightbulb_24"
+                    app:tint="@android:color/white"
+                    tools:ignore="ImageContrastCheck" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp">
+
+                <ImageButton
+                    android:id="@+id/sosButton"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:background="@color/red_700"
+                    android:contentDescription="@string/sos_button"
+                    android:padding="16dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/baseline_sos_24"
+                    app:tint="@android:color/white"
+                    tools:ignore="ImageContrastCheck,RedundantDescriptionCheck" />
+            </FrameLayout>
+        </LinearLayout>
+
+        <!-- Settings Button -->
+        <Button
+            android:id="@+id/settingsButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/rounded_button_green"
+            android:fontFamily="serif-monospace"
+            android:text="@string/settings"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            tools:ignore="TextContrastCheck" />
+    </LinearLayout>
+</ScrollView>

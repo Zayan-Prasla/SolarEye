@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient_bg"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- Title: Create an Account -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:fontFamily="serif-monospace"
+        android:gravity="center"
+        android:text="@string/create_an_account"
+        android:textColor="@android:color/white"
+        android:textSize="60sp"
+        android:textStyle="bold"
+        tools:ignore="TextContrastCheck" />
+
+    <!-- Password Policy Text -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:fontFamily="serif-monospace"
+        android:gravity="center"
+        android:text="@string/password_policy"
+        android:textColor="@android:color/white"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        tools:ignore="TextContrastCheck" />
+
+    <!-- Email input field -->
+    <EditText
+        android:id="@+id/emailEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:autofillHints="emailAddress"
+        android:background="@android:color/white"
+        android:hint="@string/email_address"
+        android:inputType="textEmailAddress"
+        android:padding="12dp"
+        android:textColor="@color/black"
+        android:textColorHighlight="#7EFFEB3B"
+        android:textColorHint="@color/black"
+        android:textSize="18sp"
+        tools:ignore="VisualLintTextFieldSize" />
+
+    <!-- Password input field -->
+    <EditText
+        android:id="@+id/passwordEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:autofillHints="password"
+        android:background="@android:color/white"
+        android:hint="@string/password"
+        android:inputType="textPassword"
+        android:padding="12dp"
+        android:textColor="@color/black"
+        android:textColorHighlight="#7EFFEB3B"
+        android:textColorHint="@color/black"
+        android:textSize="18sp"
+        tools:ignore="VisualLintTextFieldSize" />
+
+    <!-- Confirm Password input field -->
+    <EditText
+        android:id="@+id/confirmPasswordEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:autofillHints="password"
+        android:background="@android:color/white"
+        android:hint="@string/confirm_password"
+        android:inputType="textPassword"
+        android:padding="12dp"
+        android:textColor="@color/black"
+        android:textColorHighlight="#7EFFEB3B"
+        android:textColorHint="@color/black"
+        android:textSize="18sp"
+        tools:ignore="VisualLintTextFieldSize" />
+
+    <!-- Create Account Button -->
+    <Button
+        android:id="@+id/createAccountButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_button_green"
+        android:padding="12dp"
+        android:text="@string/create_new_account"
+        android:textColor="@android:color/white"
+        android:textSize="20sp"
+        tools:ignore="VisualLintButtonSize,TextContrastCheck" />
+
+    <!-- Back to Login Button -->
+    <Button
+        android:id="@+id/backButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/rounded_button_green"
+        android:text="@string/back_to_login"
+        android:textColor="@android:color/white"
+        android:textSize="16sp"
+        tools:ignore="TextContrastCheck" />
+</LinearLayout>
