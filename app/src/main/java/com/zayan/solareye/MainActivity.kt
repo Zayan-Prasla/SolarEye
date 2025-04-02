@@ -66,6 +66,12 @@ class MainActivity : AppCompatActivity() {
             showSOSConfirmationDialog()
         }
 
+        // Handle Low Power Mode Button click
+        findViewById<Button>(R.id.lowPowerModeButton).setOnClickListener {
+            // Placeholder for low power mode functionality
+            Toast.makeText(this, "Low Power Mode Button Clicked", Toast.LENGTH_SHORT).show()
+        }
+
         // Make the entire Event History Section clickable
         val eventHistorySection = findViewById<View>(R.id.eventHistorySection)
         eventHistorySection.setOnClickListener {
