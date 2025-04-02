@@ -67,5 +67,11 @@
             android:exported="true"
             android:theme="@style/Theme.SolarEye" />
 
+        <!-- VideoPlayerActivity -->
+        <activity
+            android:name=".VideoPlayerActivity"
+            android:exported="true"
+            android:theme="@style/Theme.SolarEye" />
+
     </application>
 </manifest>

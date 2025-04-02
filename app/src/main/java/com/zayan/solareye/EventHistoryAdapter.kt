@@ -6,8 +6,9 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 
-class EventHistoryAdapter(private val events: List<EventItem>, private val onThumbnailClick: (Int) -> Unit) :
+class EventHistoryAdapter(private val events: List<EventItem>, private val onThumbnailClick: (String) -> Unit) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     companion object {
@@ -58,13 +59,13 @@ class EventHistoryAdapter(private val events: List<EventItem>, private val onThu
         private val eventTime: TextView = itemView.findViewById(R.id.eventTime)
 
         fun bind(event: EventItem) {
-            eventThumbnail.setImageResource(event.thumbnail ?: R.drawable.ic_placeholder_thumbnail)
+            Glide.with(itemView.context).load(event.thumbnail).into(eventThumbnail)
             detectionType.text = event.detectionType
             eventTime.text = event.time
 
             eventThumbnail.setOnClickListener {
-                event.thumbnail?.let { thumbnail ->
-                    onThumbnailClick(thumbnail)
+                event.thumbnail?.let { videoUrl ->
+                    onThumbnailClick(videoUrl)
                 }
             }
         }

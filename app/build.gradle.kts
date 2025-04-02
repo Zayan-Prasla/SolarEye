@@ -86,7 +86,10 @@ dependencies {
     // Android Instrumented Test dependencies
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
+    // Glide for image loading
+    implementation(libs.glide)
+    annotationProcessor(libs.compiler)
 }
 
 apply(plugin = "com.google.gms.google-services")
-

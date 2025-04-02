@@ -10,12 +10,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.widget.Button
 import android.widget.ImageButton
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import com.bumptech.glide.Glide
 import com.github.mikephil.charting.charts.BarChart
 import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.data.BarData
@@ -25,11 +27,13 @@ import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
 import com.google.firebase.FirebaseApp
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.Query
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
     private val db = FirebaseFirestore.getInstance()
+    private lateinit var eventHistoryImage: ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,6 +43,8 @@ class MainActivity : AppCompatActivity() {
         FirebaseApp.initializeApp(this)
         FirebaseFirestore.setLoggingEnabled(true)
         auth = FirebaseAuth.getInstance()
+
+        eventHistoryImage = findViewById(R.id.eventHistoryImage)
 
         // Navigate to Settings Activity
         findViewById<Button>(R.id.settingsButton).setOnClickListener {
@@ -76,6 +82,31 @@ class MainActivity : AppCompatActivity() {
 
         // Initialize and update the charging stats graph
         initChargingStatsGraph()
+
+        // Fetch and display the most recent event thumbnail
+        fetchRecentEventThumbnail()
+    }
+
+    private fun fetchRecentEventThumbnail() {
+        db.collection("video_sensor_data")
+            .orderBy("timestamp", Query.Direction.DESCENDING)
+            .limit(1)
+            .addSnapshotListener { snapshots, e ->
+                if (e != null) {
+                    Toast.makeText(this, "Error fetching recent event: ${e.message}", Toast.LENGTH_SHORT).show()
+                    return@addSnapshotListener
+                }
+
+                if (snapshots != null && !snapshots.isEmpty) {
+                    val document = snapshots.documents[0]
+                    val videoUrl = document.getString("video_url")
+                    if (videoUrl != null) {
+                        Glide.with(this)
+                            .load(videoUrl)
+                            .into(eventHistoryImage)
+                    }
+                }
+            }
     }
 
     private fun initChargingStatsGraph() {

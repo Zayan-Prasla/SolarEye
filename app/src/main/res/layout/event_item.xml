@@ -16,7 +16,7 @@
         android:layout_marginEnd="16dp"
         android:contentDescription="@string/thumbnail"
         android:scaleType="centerCrop"
-        android:src="@drawable/ic_placeholder_thumbnail" />
+        android:src="@drawable/sample_event_history" />
 
     <!-- Event Details -->
     <LinearLayout
