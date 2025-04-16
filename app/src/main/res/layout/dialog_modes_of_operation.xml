@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="300dp"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@android:color/white"
+    android:padding="24dp">
+
+    <Button
+        android:id="@+id/mode1Button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="@string/low_power_mode"
+        android:fontFamily="serif-monospace"
+        android:textStyle="bold"
+        android:background="@android:color/holo_orange_light"
+        android:textColor="@android:color/black" />
+
+    <Button
+        android:id="@+id/mode2Button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="@string/battery_saver_mode"
+        android:fontFamily="serif-monospace"
+        android:textStyle="bold"
+        android:background="@android:color/darker_gray"
+        android:textColor="@android:color/black" />
+
+    <Button
+        android:id="@+id/mode3Button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/live_streaming"
+        android:fontFamily="serif-monospace"
+        android:textStyle="bold"
+        android:background="@android:color/white"
+        android:textColor="@android:color/black" />
+</LinearLayout>

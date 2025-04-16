@@ -90,7 +90,31 @@
     <string name="password_reset_email_sent_successfully">Password reset email has been sent successfully.</string>
     <string name="failed_to_send_password_reset_email_with_message">Failed to send password reset email: %1$s</string>
     <string name="live_stream">Live Stream</string>
-    <string name="low_power_mode">Low Power Mode</string>
+    <string name="live_stream_title">Live Stream</string>
+    <string name="live_stream_description">Live Stream Description</string>
+    <string name="battery_saver_mode">2. Battery Saver Mode</string>
+    <string name="camera_control_title">Camera Control</string>
+    <string name="camera_control_description">Camera Control Description</string>
+    <string name="light_control_title">Light Control</string>
+    <string name="light_control_description">Light Control Description</string>
+    <string name="sos_button_title">SOS Button</string>
+    <string name="sos_button_description">SOS Button Description</string>
+    <string name="system_controls_title">SYSTEM CONTROLS</string>
+    <string name="system_controls_description">SYSTEM CONTROLS Description</string>
+    <string name="mode1Button">Mode 1</string>
+    <string name="mode2Button">Mode 2</string>
+    <string name="mode3Button">Mode 3</string>
+    <string name="mode1_description">Mode 1 Description</string>
+    <string name="mode2_description">Mode 2 Description</string>
+    <string name="mode3_description">Mode 3 Description</string>
+    <string name="mode1_title">Mode 1</string>
+    <string name="mode2_title">Mode 2</string>
+    <string name="mode3_title">Mode 3</string>
+    <string name="modes_of_operation_title">MODES OF OPERATION</string>
+    <string name="modes_of_operation_description">Modes of Operation Description</string>
+    <string name="modes_of_operation">Modes of Operation</string>
+    <string name="low_power_mode">1. Low Power Mode</string>
+    <string name="live_streaming">3. Live Streaming</string>
     <string-array name="events_filter">
         <item>All Events</item>
         <item>Person Detected</item>

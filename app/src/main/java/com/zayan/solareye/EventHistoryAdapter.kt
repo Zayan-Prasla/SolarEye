@@ -1,5 +1,8 @@
 package com.zayan.solareye
 
+import android.content.Context
+import android.graphics.Bitmap
+import android.graphics.Matrix
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -7,9 +10,19 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.MultiTransformation
+import com.bumptech.glide.load.Transformation
+import com.bumptech.glide.load.engine.Resource
+import com.bumptech.glide.load.resource.bitmap.BitmapResource
+import com.bumptech.glide.load.resource.bitmap.CenterCrop
+import com.bumptech.glide.request.RequestOptions
+import com.bumptech.glide.util.Util
+import java.security.MessageDigest
 
-class EventHistoryAdapter(private val events: List<EventItem>, private val onThumbnailClick: (String) -> Unit) :
-    RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class EventHistoryAdapter(
+    private val events: List<EventItem>,
+    private val onThumbnailClick: (String) -> Unit
+) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     companion object {
         const val TYPE_HEADER = 0
@@ -41,9 +54,7 @@ class EventHistoryAdapter(private val events: List<EventItem>, private val onThu
         }
     }
 
-    override fun getItemCount(): Int {
-        return events.size
-    }
+    override fun getItemCount(): Int = events.size
 
     inner class SectionHeaderViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val headerTitle: TextView = itemView.findViewById(R.id.sectionHeader)
@@ -59,7 +70,20 @@ class EventHistoryAdapter(private val events: List<EventItem>, private val onThu
         private val eventTime: TextView = itemView.findViewById(R.id.eventTime)
 
         fun bind(event: EventItem) {
-            Glide.with(itemView.context).load(event.thumbnail).into(eventThumbnail)
+            val context = itemView.context
+
+            Glide.with(context)
+                .load(event.thumbnail)
+                .apply(
+                    RequestOptions().transform(
+                        MultiTransformation(
+                            CenterCrop(),
+                            Rotate180Transformation()
+                        )
+                    )
+                )
+                .into(eventThumbnail)
+
             detectionType.text = event.detectionType
             eventTime.text = event.time
 
@@ -68,6 +92,36 @@ class EventHistoryAdapter(private val events: List<EventItem>, private val onThu
                     onThumbnailClick(videoUrl)
                 }
             }
+        }
+    }
+
+    // Custom Glide Transformation to rotate bitmap by 180 degrees
+    class Rotate180Transformation : Transformation<Bitmap> {
+
+        override fun updateDiskCacheKey(messageDigest: MessageDigest) {
+            messageDigest.update("rotate180Transformation".toByteArray())
+        }
+
+        override fun equals(other: Any?): Boolean = other is Rotate180Transformation
+
+        override fun hashCode(): Int = Util.hashCode(javaClass.name.hashCode())
+
+        override fun transform(
+            context: Context,
+            resource: Resource<Bitmap>,
+            outWidth: Int,
+            outHeight: Int
+        ): Resource<Bitmap> {
+            val source = resource.get()
+            val matrix = Matrix().apply {
+                postRotate(180f)
+            }
+            val rotatedBitmap = Bitmap.createBitmap(
+                source, 0, 0,
+                source.width, source.height,
+                matrix, true
+            )
+            return BitmapResource.obtain(rotatedBitmap, Glide.get(context).bitmapPool)!!
         }
     }
 }

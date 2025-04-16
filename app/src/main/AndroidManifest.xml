@@ -73,5 +73,11 @@
             android:exported="true"
             android:theme="@style/Theme.SolarEye" />
 
+        <!-- LSActivity -->
+        <activity
+            android:name=".LiveStreamActivity"
+            android:exported="true"
+            android:theme="@style/Theme.SolarEye" />
+
     </application>
 </manifest>
